@@ -1,0 +1,56 @@
+[
+    {
+        "_id": 1,
+        "name": "Reare Break",
+        "price": "270",
+        "img": "https://i.ibb.co/v3F02BC/reare-break.jpg",
+        "description": "The best reare break in the bike world",
+        "moquantity": "100",
+        "aquantity": "1500"
+    },
+    {
+        "_id": 2,
+        "name": "Break Cable",
+        "price": "150",
+        "img": "https://i.ibb.co/hgFGz0R/break-cable.jpg",
+        "description": "The best reare break in the bike world",
+        "moquantity": "100",
+        "aquantity": "2000"
+    },
+    {
+        "_id": 3,
+        "name": "Wheel Rim",
+        "price": "200",
+        "img": "https://i.ibb.co/TDfcS83/wheel-rim.jpg",
+        "description": "The best reare break in the bike world",
+        "moquantity": "100",
+        "aquantity": "1500"
+    },
+    {
+        "_id": 4,
+        "name": "Tire",
+        "price": "350",
+        "img": "https://i.ibb.co/ZWyYhHB/tire.jpg",
+        "description": "The best Tire in the bike world",
+        "moquantity": "100",
+        "aquantity": "1800"
+    },
+    {
+        "_id": 5,
+        "name": "Speedmeter",
+        "price": "200",
+        "img": "https://i.ibb.co/NrNrzL1/speedometer.jpg",
+        "description": "The best speedmeter in the bike world",
+        "moquantity": "100",
+        "aquantity": "1500"
+    },
+    {
+        "_id": 6,
+        "name": "Engine",
+        "price": "1330",
+        "img": "https://i.ibb.co/mXh6mhp/engine-1-1.jpg",
+        "description": "The best reare break in the bike world",
+        "moquantity": "50",
+        "aquantity": "500"
+    }
+]

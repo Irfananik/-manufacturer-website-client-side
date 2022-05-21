@@ -7,7 +7,7 @@ import Login from './Pagas/Register/Login';
 
 function App() {
   return (
-    <div className="App">
+    <div className="">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>

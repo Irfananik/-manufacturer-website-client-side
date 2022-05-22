@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PartsCard = ({ p }) => {
     const { name, img, description, price, aquantity, moquantity } = p
+
     return (
         <div>
             <div class="card lg:max-w-lg bg-base-100 shadow-xl">
@@ -13,7 +15,7 @@ const PartsCard = ({ p }) => {
                     <h3 className="font-bold">Minimum Order Quantity: <span className='text-secondary'>{moquantity}</span> </h3>
                     <h3 className="font-bold">Available Quantity: <span className='text-secondary'>{aquantity}</span> </h3>
                     <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Order Now</button>
+                        <button class="btn btn-primary"><Link to="/purchase">Order Now</Link></button>
                     </div>
                 </div>
             </div>

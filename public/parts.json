@@ -13,7 +13,7 @@
         "name": "Break Cable",
         "price": "150",
         "img": "https://i.ibb.co/hgFGz0R/break-cable.jpg",
-        "description": "The best reare break in the bike world",
+        "description": "The best break cable in the bike world",
         "moquantity": "100",
         "aquantity": "2000"
     },
@@ -22,7 +22,7 @@
         "name": "Wheel Rim",
         "price": "200",
         "img": "https://i.ibb.co/TDfcS83/wheel-rim.jpg",
-        "description": "The best reare break in the bike world",
+        "description": "The best wheel rim in the bike world",
         "moquantity": "100",
         "aquantity": "1500"
     },
@@ -49,7 +49,7 @@
         "name": "Engine",
         "price": "1330",
         "img": "https://i.ibb.co/mXh6mhp/engine-1-1.jpg",
-        "description": "The best reare break in the bike world",
+        "description": "The best Engine in the bike world",
         "moquantity": "50",
         "aquantity": "500"
     }

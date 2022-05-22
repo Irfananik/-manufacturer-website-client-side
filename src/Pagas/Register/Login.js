@@ -1,9 +1,105 @@
 import React from 'react';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init'
+import { useForm } from "react-hook-form";
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Loading from '../Components/Loading';
+
 
 const Login = () => {
+
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
+    const { register, formState: { errors }, handleSubmit } = useForm()
+
+    let signInError
+
+    const navigate = useNavigate()
+    const location = useLocation()
+    let from = location.state?.from?.pathname || "/"
+
+    const onSubmit = data => {
+        console.log(data)
+        signInWithEmailAndPassword(data.email, data.password)
+    }
+
+    if (error || gError) {
+        signInError = <p className="text-red-500">{error?.message || gError?.message}</p>
+    }
+
+    if (loading || gLoading) {
+        return <Loading />
+    }
+
+    if(user || gUser) {
+        navigate(from,{replace:true})
+        console.log(user, gUser)
+    }
+
     return (
-        <div>
-            
+        <div className="flex h-screen justify-center items-center">
+            <div class="card w-96 bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="text-2xl text-accent font-bold text-center">Login</h2>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <div class="form-control w-full max-w-xs">
+                            <label class="label">
+                                <span class="label-text">Enter your email</span>
+                            </label>
+                            <input {...register("email", {
+                                required: {
+                                    value: true,
+                                    message: "Email is required!"
+                                },
+                                pattern: {
+                                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                                    message: 'Please enter a valid email address'
+                                }
+                            })}
+                                type="email" placeholder="Your email" class="input input-bordered w-full max-w-xs" />
+
+                            <label class="label">
+                                {errors.email?.type === 'required' && <span class="label-text-alt text-red-500">{errors.email.message}</span>}
+                                {errors.email?.type === 'pattern' && <span class="label-text-alt text-red-500">{errors.email.message}</span>}
+                            </label>
+                        </div>
+
+                        <div class="form-control w-full max-w-xs">
+                            <label class="label">
+                                <span class="label-text">Enter your password</span>
+                            </label>
+                            <input {...register("password", {
+                                required: {
+                                    value: true,
+                                    message: "Password is required!"
+                                },
+                                minLength: {
+                                    value: 8,
+                                    message: 'Must be at least 6 characters'
+                                }
+                            })}
+                                type="password" placeholder="Your password" class="input input-bordered w-full max-w-xs" />
+
+                            <label class="label">
+                                {errors.password?.type === 'required' && <span class="label-text-alt text-red-500">{errors.password.message}</span>}
+                                {errors.password?.type === 'minLength' && <span class="label-text-alt text-red-500">{errors.password.message}</span>}
+                            </label>
+                        </div>
+                        {signInError}
+                        <input className="btn w-full max-w-xs my-3" type="submit" value="Login" />
+                        <p><small>New to eBikeParts?: <Link className="text-secondary" to="/signup">Create Account</Link></small></p>
+                    </form>
+                    <div class="divider">OR</div>
+                    <button onClick={() => signInWithGoogle()} class="btn btn-outline">Login with Google</button>
+                </div>
+            </div>
         </div>
     );
 };

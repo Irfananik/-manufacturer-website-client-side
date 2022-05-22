@@ -5,6 +5,8 @@ import Navbar from './Pagas/Components/Navbar';
 import Home from './Pagas/Home';
 import Purchase from './Pagas/Purchase';
 import Login from './Pagas/Register/Login';
+import RequireAuth from './Pagas/Register/RequireAuth';
+import SignUp from './Pagas/Register/SignUp';
 
 function App() {
   return (
@@ -12,10 +14,15 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/purchase" element={<Purchase />}></Route>
+        <Route path="/purchase" element={
+          <RequireAuth>
+            <Purchase />
+          </RequireAuth>
+        }></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/signup" element={<SignUp />}></Route>
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

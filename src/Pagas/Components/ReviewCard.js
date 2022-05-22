@@ -4,12 +4,12 @@ const ReviewCard = ({review}) => {
     const {name, comment} = review;
     return (
         <div>
-            <div class="cardlg:max-w-lg bg-primary shadow-xl rounded-lg">
-                <div class="card-body">
-                    <h2 class="card-title text-white">{name}</h2>
-                    <p className="text-accent">{comment}</p>
-                    <div class="card-actions justify-end">
-                        <button class="btn btn-primary">See details</button>
+            <div className="cardlg:max-w-lg bg-primary shadow-xl rounded-lg">
+                <div className="card-body">
+                    <h2 className="card-title text-white">{name}</h2>
+                    <p classNameName="text-accent">{comment}</p>
+                    <div className="card-actions justify-end">
+                        <button className="btn btn-primary">See details</button>
                     </div>
                 </div>
             </div>

@@ -17,6 +17,7 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+
     const { register, formState: { errors }, handleSubmit } = useForm()
 
     let signInError
@@ -38,8 +39,8 @@ const Login = () => {
         return <Loading />
     }
 
-    if(user || gUser) {
-        navigate(from,{replace:true})
+    if (user || gUser) {
+        navigate(from, { replace: true })
         console.log(user, gUser)
     }
 

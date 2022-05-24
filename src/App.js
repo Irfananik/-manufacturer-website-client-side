@@ -1,4 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import Footer from './Pagas/Components/Footer';
 import Navbar from './Pagas/Components/Navbar';
@@ -30,6 +32,7 @@ function App() {
         <Route path='/*' element={<NotFound />}></Route>
       </Routes>
       <Footer />
+      <ToastContainer />
     </div>
   );
 }

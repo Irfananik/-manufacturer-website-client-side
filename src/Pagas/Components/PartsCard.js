@@ -1,8 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const PartsCard = ({ p }) => {
-    const { name, img, description, price, aquantity, moquantity } = p
+    const { _id, name, img, description, price, aquantity, moquantity } = p
+
+    const navigate = useNavigate()
+
+    const hadlePartsDetails = id => {
+        navigate(`/purchase/${id}`)
+       
+    }
 
     return (
         <div>
@@ -15,7 +22,7 @@ const PartsCard = ({ p }) => {
                     <h3 className="font-bold">Minimum Order Quantity: <span className='text-secondary'>{moquantity}</span> </h3>
                     <h3 className="font-bold">Available Quantity: <span className='text-secondary'>{aquantity}</span> </h3>
                     <div class="card-actions justify-end">
-                        <button class="btn btn-primary"><Link to="/purchase">Order Now</Link></button>
+                        <button onClick={() => hadlePartsDetails(_id)} class="btn btn-primary">Order Now</button>
                     </div>
                 </div>
             </div>

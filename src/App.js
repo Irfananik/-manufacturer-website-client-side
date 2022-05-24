@@ -20,6 +20,11 @@ function App() {
             <Purchase />
           </RequireAuth>
         }></Route>
+        <Route path="/purchase/:partsId" element={
+          <RequireAuth>
+            <Purchase />
+          </RequireAuth>
+        }></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path='/*' element={<NotFound />}></Route>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Purchase from '../Purchase';
 import PartsCard from './PartsCard';
 
 const Parts = () => {
@@ -14,7 +15,7 @@ const Parts = () => {
             <h2 className="text-primary font-bold text-3xl text-center my-12">PARTS DESPLAY</h2>
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                 {
-                    parts.map(p => <PartsCard key={p._id} p={p} />)
+                    parts.map(p => <PartsCard key={p._id} p={p}/>)
                 }
             </div>
         </div>

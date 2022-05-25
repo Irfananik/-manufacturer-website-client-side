@@ -37,6 +37,14 @@ const AddReview = () => {
                             />
                         </div>
                         <div className="form-control mb-2">
+                            <input
+                                type="number"
+                                {...register("rating", { required: true })}
+                                placeholder="Your rating"
+                                className="input input-bordered"
+                            />
+                        </div>
+                        <div className="form-control mb-2">
                             <textarea
                                 {...register("comments", { required: true })}
                                 placeholder="Your comments"

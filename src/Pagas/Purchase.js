@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import auth from '../firebase.init';
+import Loading from './Components/Loading';
 
-const Purchase = ({refetch}) => {
+const Purchase = () => {
     const { partsId } = useParams()
     const [part, setPart] = useState([])
+
 
     useEffect(() => {
         const url = `http://localhost:5000/parts/${partsId}`
@@ -15,34 +18,29 @@ const Purchase = ({refetch}) => {
             .then(data => setPart(data))
     }, [partsId])
 
-    const [user, loading, error] = useAuthState(auth)
+    const [user, loading] = useAuthState(auth)
 
-    const handlePlaceOrder = event => {
-        event.preventDefault()
+    const { register, formState: { errors }, handleSubmit } = useForm()
 
-        const placeOrder = {
-            placeOrderId: part._id,
-            producQuantity: event.target.quantity.value,
-            price: part.price,
-            userName: user.displayName,
-            userEmail: user.email,
-            userAddress: event.target.address.value,
-            userPhone: event.target.phone.value
-        }
+    if (loading) {
+        return <Loading />
+    }
 
+    const onSubmit = (data, event) => {
+        // console.log(data)
         fetch('http://localhost:5000/placeorder', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(placeOrder)
+            body: JSON.stringify(data,part)
         })
-            .then(response => response.json())
+            .then(res => res.json())
             .then(data => {
-                console.log(data)
-                toast.success('Your order placement completed successfully!')
+                console.log(data);
+                toast('Your ordar placed!!!')
+                event.target.reset()
             })
-            refetch()
     }
 
     return (
@@ -56,15 +54,93 @@ const Purchase = ({refetch}) => {
                     <h3 className="font-bold">Minimum Order Quantity: <span className='text-secondary'>{part?.moquantity}</span> </h3>
                     <h3 className="font-bold">Available Quantity: <span className='text-secondary'>{part?.aquantity}</span> </h3>
                     <div className="card-actions justify-end">
-                        <form onSubmit={handlePlaceOrder} class="form-control">
-                            <input type="number" name='quantity' placeholder="Product Quantity" class="input input-bordered my-3" />
-                            <input type="text" name='product' disabled value={part?.name} placeholder="Product Name" class="input input-bordered my-3" />
-                            <input type="number" name='price' disabled value={part?.price} placeholder="Product Price" class="input input-bordered my-3" />
-                            <input type="text" name='name' disabled value={user?.displayName} placeholder="User Name" class="input input-bordered my-3" />
-                            <input type="email" name='email' disabled value={user?.email} placeholder="User Email" class="input input-bordered my-3" />
-                            <input type="text" name='address' placeholder="User Address" class="input input-bordered my-3" />
-                            <input type="number" name='phone' placeholder="User Number" class="input input-bordered my-3" />
-                            <input type="submit" value="Submit" className="btn btn-secondary w-full max-w-xs my-3" />
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <div className="form-control mb-2">
+                                <input
+                                    {...register("email")}
+                                    value={user?.email}
+                                    className="input input-bordered"
+                                />
+                            </div>
+                            <div className="form-control mb-2">
+                                <input
+                                    {...register("item")}
+                                    value={part?.name}
+                                    className="input input-bordered"
+                                />
+                            </div>
+                            <div className="form-control mb-2">
+                                <input
+                                    {...register("price")}
+                                    value={part?.price}
+                                    className="input input-bordered"
+                                />
+                            </div>
+                            <div className="form-control mb-2">
+                                <input
+                                    {...register("userName")}
+                                    value={user?.displayName}
+                                    className="input input-bordered"
+                                />
+                            </div>
+                            <div className="form-control mb-2">
+                                <input
+                                    {...register("number", { required: true })}
+                                    placeholder="Your Phone Number"
+                                    className="input input-bordered"
+                                />
+                            </div>
+                            <div className="form-control mb-2">
+                                <textarea
+                                    {...register("address", { required: true })}
+                                    placeholder="Your Address"
+                                    className="input input-bordered"
+                                />
+                            </div>
+                            <div className="form-control mb-2">
+                                <label className="label">
+                                    <span className="label-text">Quantity</span>
+                                </label>
+                                <input
+                                    {...register("quantity", {
+                                        max: {
+                                            value: part?.aquantity,
+                                            message: `Available items ${part?.aquantity}`
+                                        },
+                                        min: {
+                                            value: part?.moquantity,
+                                            message: `Minimum Order ${part?.moquantity}`
+                                        }
+                                    })}
+                                    placeholder={`Minimum ${part?.moquantity} pices`}
+                                    required
+                                    className="input input-bordered"
+                                />
+                            </div>
+                            <label className="label">
+                                {errors?.quantity?.type === 'max' && <span className="label-text-alt text-red-500">{errors?.quantity?.message}</span>}
+                                {errors?.quantity?.type === 'min' && <span className="label-text-alt text-red-500">{errors?.quantity?.message}</span>}
+                            </label>
+                            <div className="form-control">
+                                {
+                                    errors?.quantity?.type === 'max' || errors?.quantity?.type === 'min'
+                                        ?
+                                        <input
+                                            disabled
+                                            type="submit"
+                                            className='btn btn-primary'
+                                            value="Purchase"
+                                        />
+                                        :
+                                        <input
+                                            type="submit"
+                                            className='btn btn-primary'
+                                            value="Purchase"
+                                        />
+
+                                }
+
+                            </div>
                         </form>
                     </div>
                 </div>

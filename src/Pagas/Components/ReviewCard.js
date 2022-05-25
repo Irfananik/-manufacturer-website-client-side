@@ -1,13 +1,13 @@
 import React from 'react';
 
 const ReviewCard = ({review}) => {
-    const {name, comment} = review;
+    const {userName, comments} = review;
     return (
         <div>
             <div className="cardlg:max-w-lg bg-primary shadow-xl rounded-lg">
                 <div className="card-body">
-                    <h2 className="card-title text-white">{name}</h2>
-                    <p classNameName="text-accent">{comment}</p>
+                    <h2 className="card-title text-white">{userName}</h2>
+                    <p classNameName="text-accent">{comments}</p>
                     <div className="card-actions justify-end">
                         <button className="btn btn-primary">See details</button>
                     </div>

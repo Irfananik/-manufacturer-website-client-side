@@ -2,6 +2,7 @@ import React from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Components/Loading';
 
@@ -28,7 +29,8 @@ const SignUp = () => {
         await createUserWithEmailAndPassword(data.email, data.password)
         await updateProfile({displayName: data.name})
         navigate('/')
-        console.log(data)
+        //console.log(data)
+        toast('Registration successful!!!')
      }
 
      if (loading || gLoading || updating) {

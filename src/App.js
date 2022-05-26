@@ -15,6 +15,7 @@ import Home from './Pagas/Home';
 import MyPortfolio from './Pagas/MyPortfolio';
 import Purchase from './Pagas/Purchase';
 import Login from './Pagas/Register/Login';
+import RequireAdmin from './Pagas/Register/RequireAdmin';
 import RequireAuth from './Pagas/Register/RequireAuth';
 import SignUp from './Pagas/Register/SignUp';
 
@@ -37,7 +38,7 @@ function App() {
           <Route index element={<MyOrder/>}></Route>
           <Route path="addreview" element={<AddReview/>}></Route>
           <Route path="myprofile" element={<MyProfile/>}></Route>
-          <Route path="user" element={<User/>}></Route>
+          <Route path="user" element={<RequireAdmin><User/></RequireAdmin>}></Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>

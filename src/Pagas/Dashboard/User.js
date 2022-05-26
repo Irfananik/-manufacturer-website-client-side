@@ -25,7 +25,6 @@ const User = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Make Admin</th>
-                            <th>Favorite Color</th>
                         </tr>
                     </thead>
                     <tbody>

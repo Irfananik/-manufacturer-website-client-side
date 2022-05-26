@@ -11,11 +11,18 @@ const UserTable = ({ user, refetch, index }) => {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             }
         })
-            .then(response => response.json())
+            .then(response => {
+                if (response.status === 403) {
+                    toast.error('You are not capable make an admin')
+                }
+                return response.json()
+            })
             .then(data => {
                 //console.log(data)
-                toast.success("Made an admin!")
-                refetch()
+                if (data.modifiedCount > 0) {
+                    refetch()
+                    toast.success("Made an admin!")
+                }
             })
     }
     return (
@@ -23,7 +30,6 @@ const UserTable = ({ user, refetch, index }) => {
             <th>{index + 1}</th>
             <td>{email}</td>
             <td>{role !== 'admin' && <button onClick={makeAdmin} class="btn btn-sm btn-primary">Admin</button>}</td>
-            <td>Blue</td>
         </tr>
     );
 };

@@ -27,17 +27,28 @@ const Purchase = () => {
     }
 
     const onSubmit = (data, event) => {
-        // console.log(data)
+        const totalPrice = parseInt(part.price * data.quantity)
+        const booking = {
+            itemId: part._id,
+            item:part.name,
+            price: totalPrice,
+            name: user.displayName,
+            email: user.email,
+            quantity: data.quantity,
+            phone: data.number,
+            address: data.address
+        }
+        //console.log(data)
         fetch('http://localhost:5000/placeorder', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(data,part)
+            body: JSON.stringify(booking)
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                //console.log(data);
                 toast('Your ordar placed!!!')
                 event.target.reset()
             })

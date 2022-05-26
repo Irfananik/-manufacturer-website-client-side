@@ -15,11 +15,18 @@ const MyProfile = () => {
         <div className="flex justify-center items-center my-10">
             <div class="card w-96 bg-primary text-primary-content">
                 <div class="card-body">
-                    <h2 class="card-title">Your Profile</h2>
+                    <h2 class="card-title">Update Your Profile</h2>
                     <p>Name: {user.displayName}</p>
                     <p>Email: {user.email}</p>
                     <div>
                         <form onSubmit={handleSubmit(onSubmit)}>
+                            <div className="form-control mb-2">
+                                <input
+                                    {...register("email", { required: true })}
+                                    value={user?.email}
+                                    className="input input-bordered"
+                                />
+                            </div>
                             <div className="form-control mb-2">
                                 <textarea
                                     {...register("education", { required: true })}
@@ -53,6 +60,15 @@ const MyProfile = () => {
 
                             <button className="btn btn-accent"><input type="submit" /></button>
                         </form>
+                        <div class="card lg:max-w-lg bg-base-100 shadow-xl my-6">
+                            <div class="card-body">
+                                <h2 class="card-title">Your Profile</h2>
+                                <p>Name:</p>
+                                <p>Education:</p>
+                                <p>Location:</p>
+                                <p>LinkdIn:</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

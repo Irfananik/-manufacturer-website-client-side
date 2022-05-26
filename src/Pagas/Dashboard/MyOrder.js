@@ -10,7 +10,7 @@ const MyOrder = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/placeorder?email=${user.email}`, {
+        fetch(`https://stormy-brook-30276.herokuapp.com/placeorder?email=${user.email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

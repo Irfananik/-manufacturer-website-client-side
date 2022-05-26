@@ -12,7 +12,7 @@ const Purchase = () => {
 
 
     useEffect(() => {
-        const url = `http://localhost:5000/parts/${partsId}`
+        const url = `https://stormy-brook-30276.herokuapp.com/parts/${partsId}`
         fetch(url)
             .then(response => response.json())
             .then(data => setPart(data))
@@ -39,7 +39,7 @@ const Purchase = () => {
             address: data.address
         }
         //console.log(data)
-        fetch('http://localhost:5000/placeorder', {
+        fetch('https://stormy-brook-30276.herokuapp.com/placeorder', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

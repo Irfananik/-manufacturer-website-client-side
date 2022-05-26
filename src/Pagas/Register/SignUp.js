@@ -32,9 +32,12 @@ const SignUp = () => {
     const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password)
         await updateProfile({ displayName: data.name })
-        navigate('/')
         //console.log(data)
         toast('Registration successful!!!')
+    }
+
+    if (token) {
+        navigate('/')
     }
 
     if (loading || gLoading || updating) {

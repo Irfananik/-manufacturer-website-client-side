@@ -10,6 +10,7 @@ import AddReview from './Pagas/Dashboard/AddReview';
 import Dashboard from './Pagas/Dashboard/Dashboard';
 import MyOrder from './Pagas/Dashboard/MyOrder';
 import MyProfile from './Pagas/Dashboard/MyProfile';
+import User from './Pagas/Dashboard/User';
 import Home from './Pagas/Home';
 import MyPortfolio from './Pagas/MyPortfolio';
 import Purchase from './Pagas/Purchase';
@@ -36,6 +37,7 @@ function App() {
           <Route index element={<MyOrder/>}></Route>
           <Route path="addreview" element={<AddReview/>}></Route>
           <Route path="myprofile" element={<MyProfile/>}></Route>
+          <Route path="user" element={<User/>}></Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>

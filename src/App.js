@@ -9,6 +9,7 @@ import NotFound from './Pagas/Components/NotFound';
 import AddProduct from './Pagas/Dashboard/AddProduct';
 import AddReview from './Pagas/Dashboard/AddReview';
 import Dashboard from './Pagas/Dashboard/Dashboard';
+import ManageProduc from './Pagas/Dashboard/ManageProduc';
 import MyOrder from './Pagas/Dashboard/MyOrder';
 import MyProfile from './Pagas/Dashboard/MyProfile';
 import User from './Pagas/Dashboard/User';
@@ -41,6 +42,7 @@ function App() {
           <Route path="myprofile" element={<MyProfile/>}></Route>
           <Route path="user" element={<RequireAdmin><User/></RequireAdmin>}></Route>
           <Route path="addproduct" element={<RequireAdmin><AddProduct/></RequireAdmin>}></Route>
+          <Route path="manageproduct" element={<RequireAdmin><ManageProduc/></RequireAdmin>}></Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>

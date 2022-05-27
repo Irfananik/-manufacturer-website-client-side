@@ -29,6 +29,18 @@ const Blog = () => {
                     <p>This helps to detect and protect against bugs in the future. Sometimes developers write unit tests first, then write the code. This approach is also known as test-driven development (TDD). In TDD, requirements are turned into specific test cases, then the software is improved to pass the new tests.</p>
                 </div>
             </div>
+            <div className="card lg:max-w-lg bg-base-100 shadow-xl image-full">
+                <div className="card-body">
+                    <h2 className="card-title">How does prototypical inheritance work?</h2>
+                    <p>JavaScript Objects have a property called [prototype] In modern JavaScript the property is __proto__ By following the prototypical inheritance system objectA can borrow some method from objectB There is no class feature in core JavaScript, But class in ES6 (JS) is specially a syntactical sugar over javascript's prototypical inheritance. Class instances can extend their methods from another instances with the help of __proto__ method</p>
+                </div>
+            </div>
+            <div className="card lg:max-w-lg bg-base-100 shadow-xl image-full">
+                <div className="card-body">
+                    <h2 className="card-title">Why you do not set the state directly in React.</h2>
+                    <p>Firstly, We use state in a react app, so that we can rerender the DOM efficiently and effectively. State or useState hook causes rerendering the DOM If you write code products = [...] in this way, our DOM will not be rerendered, and we will not see any changes or effects on the UI And If we use setProducts([...]) like that our DOM will be rerendered and we experience dynamic user inteface (UI)</p>
+                </div>
+            </div>
 
         </div>
     );

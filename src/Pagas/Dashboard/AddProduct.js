@@ -31,7 +31,7 @@ const AddProduct = () => {
                         aquantity: data.aquantity
                     }
 
-                    fetch('http://localhost:5000/parts', {
+                    fetch('https://stormy-brook-30276.herokuapp.com/parts', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

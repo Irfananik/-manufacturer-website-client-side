@@ -11,7 +11,7 @@ const MyProfile = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/myprofile?email=${user.email}`, {
+            fetch(`https://stormy-brook-30276.herokuapp.com/myprofile?email=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -30,7 +30,7 @@ const MyProfile = () => {
             phone: data.phone,
             email: user.email
         }
-        const url = `http://localhost:5000/myprofile/${user?.email}`
+        const url = `https://stormy-brook-30276.herokuapp.com/myprofile/${user?.email}`
         fetch(url, {
             method: 'PUT',
             headers: {

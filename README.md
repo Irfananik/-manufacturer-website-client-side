@@ -1,4 +1,4 @@
-# Create multiple items warehouse management website (eElectronics) with React App
+# Create multiple items warehouse management website (eBikeParts) with React App
 
 Live website link: [Click Here](https://ebike-parts.web.app/).
 
